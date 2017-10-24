@@ -1,0 +1,37 @@
+<%= form_with(model: flower, local: true) do |form| %>
+  <% if flower.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(flower.errors.count, "error") %> prohibited this flower from being saved:</h2>
+
+      <ul>
+      <% flower.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :flower_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :smell %>
+    <%= form.text_field :smell, id: :flower_smell %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pretty %>
+    <%= form.check_box :pretty, id: :flower_pretty %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.number_field :height, id: :flower_height %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
